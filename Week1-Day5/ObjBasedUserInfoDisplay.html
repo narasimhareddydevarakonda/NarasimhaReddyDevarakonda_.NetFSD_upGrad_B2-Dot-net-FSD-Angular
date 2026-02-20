@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Info Display</title>
+</head>
+<body>
+
+    <button onclick="showInfo()">Display User Info</button>
+
+    <p id="name"></p>
+    <p id="role"></p>
+    <p id="state"></p>
+
+    <script>
+        function showInfo() {
+            var user = {
+                name: "Narasimha Reddy",
+                role: "Developer",
+                state: "AP"
+            };
+
+            displayUserInfo(user);
+        }
+
+        function displayUserInfo(userObj) {
+            document.getElementById("name").innerHTML = "Name: " + userObj.name;
+            document.getElementById("role").innerHTML = "Role: " + userObj.role;
+            document.getElementById("state").innerHTML = "state: " + userObj.state;
+        }
+    </script>
+
+</body>
+</html>
