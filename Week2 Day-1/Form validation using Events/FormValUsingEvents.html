@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Form Validation Using Events</title>
+      <script src="script.js"></script>
+</head>
+<body>
+        <h2>Registration Form</h2>
+
+    Name:
+    <input type="text" id="name" onchange="validateName()">
+    <span id="nameMsg"></span>
+    <br><br>
+
+    Email:
+    <input type="text" id="email" onchange="validateEmail()">
+    <span id="emailMsg"></span>
+    <br><br>
+
+    Age:
+    <input type="number" id="age" onchange="validateAge()">
+    <span id="ageMsg"></span>
+    <br><br>
+
+    <button onclick="saveData()">Register</button>
+    <p id="finalMsg"></p>
+</body>
+</html>
