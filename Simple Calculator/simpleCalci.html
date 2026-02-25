@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Responsive Calculator</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Entire calculator body black */
+    .calculator {
+        background: black;
+        padding: 20px;
+        border-radius: 15px;
+        width: 350px;
+        border: 5px solid black;
+    }
+
+    /* Display */
+    .display {
+        width: 100%;
+        height: 60px;
+        background: white;
+        color: black;
+        font-size: 2rem;
+        text-align: right;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        border: 2px solid black;
+        overflow-x: auto;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    /* All keys dark blue */
+    button {
+        padding: 15px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: darkblue;
+        color: white;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    .equal {
+        grid-column: span 2;
+    }
+
+    /* Responsive Design */
+
+    @media (max-width: 480px) {
+        .calculator {
+            width: 95%;
+            padding: 15px;
+        }
+
+        .display {
+            height: 50px;
+            font-size: 1.5rem;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .display {
+            font-size: 1.2rem;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="deleteLast()">DEL</button>
+        <button onclick="appendValue('/')">÷</button>
+        <button onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('-')">−</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('.')">.</button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+    let display = document.getElementById("display");
+
+    function appendValue(value) {
+        if (display.innerText === "0") {
+            display.innerText = value;
+        } else {
+            display.innerText += value;
+        }
+    }
+
+    function clearDisplay() {
+        display.innerText = "0";
+    }
+
+    function deleteLast() {
+        if (display.innerText.length === 1) {
+            display.innerText = "0";
+        } else {
+            display.innerText = display.innerText.slice(0, -1);
+        }
+    }
+
+    function calculate() {
+        try {
+            display.innerText = eval(display.innerText);
+        } catch {
+            display.innerText = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>
