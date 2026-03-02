@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="container">
+    <h2>Student Feedback Form</h2>
+
+    <form id="feedbackForm">
+        <label>Name:</label>
+        <input type="text" id="name">
+
+        <label>Email:</label>
+        <input type="email" id="email">
+
+        <label>Course Rating:</label>
+        <select id="rating">
+            <option value="">Select Rating</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Average">Average</option>
+            <option value="Poor">Poor</option>
+        </select>
+
+        <label>Comments:</label>
+        <textarea id="comments" rows="4"></textarea>
+
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <div id="message"></div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $("body").css({
+        "font-family": "Arial, sans-serif"
+    });
+
+    $("#container").css({
+        "width": "400px",
+        "margin": "40px auto"
+    });
+
+    $("input, select, textarea").css({
+        "width": "100%",
+        "padding": "8px",
+        "margin": "6px 0"
+    });
+
+    $("button").css({
+        "padding": "8px 12px",
+        "margin-top": "10px",
+        "cursor": "pointer"
+    });
+
+    $("#message").css({
+        "margin-top": "15px",
+        "font-weight": "bold"
+    });
+
+    $("#submitBtn").click(function(e){
+        e.preventDefault();
+
+        var name = $("#name").val().trim();
+        var email = $("#email").val().trim();
+
+        if(name === "" || email === ""){
+            $("#message")
+                .css("color", "red")
+                .text("Please fill in both Name and Email fields.");
+        }
+        else{
+            $("#message")
+                .css("color", "green")
+                .text("Thank you! Your feedback has been submitted successfully.");
+
+            $("#feedbackForm")[0].reset();
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

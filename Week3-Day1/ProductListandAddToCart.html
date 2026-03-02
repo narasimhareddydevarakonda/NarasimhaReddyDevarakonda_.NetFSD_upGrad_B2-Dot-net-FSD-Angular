@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List - Add to Cart</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 600px;
+            margin: 40px auto;
+        }
+        .cart {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .product button {
+            margin-top: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .message {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="cart">
+        Cart Items: <span id="cartCount">0</span>
+    </div>
+
+    <div class="product">
+        <h4>Product 1</h4>
+        <button class="addToCart">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h4>Product 2</h4>
+        <button class="addToCart">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h4>Product 3</h4>
+        <button class="addToCart">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+
+    <div class="product">
+        <h4>Product 4</h4>
+        <button class="addToCart">Add to Cart</button>
+        <span class="message"></span>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    var count = 0;
+    $(".container").on("click", ".addToCart", function(){
+        count++;
+        $("#cartCount").text(count);
+        $(this).prop("disabled", true).attr("title", "Product Added");
+        $(this).siblings(".message").text("Added successfully!");
+    });
+});
+</script>
+
+</body>
+</html>

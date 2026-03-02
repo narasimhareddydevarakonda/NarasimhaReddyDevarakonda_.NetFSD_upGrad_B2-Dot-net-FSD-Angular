@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Toggle Section</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 600px;
+            margin: 40px auto;
+        }
+        .faq-item {
+            margin-bottom: 10px;
+        }
+        .question {
+            background: white;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid white;
+        }
+        .answer {
+            display: none;
+            padding: 10px;
+            border: 1px solid white;
+            border-top: none;
+        }
+        .active {
+            background: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="question">1. What courses do you offer?</div>
+        <div class="answer">We offer web development, data science, and programming courses.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. How can I enroll?</div>
+        <div class="answer">You can enroll online through our official website.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. Are certificates provided?</div>
+        <div class="answer">Yes, certificates are provided after successful course completion.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. What is the course duration?</div>
+        <div class="answer">Course duration varies from 4 weeks to 6 months.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. Is there any placement support?</div>
+        <div class="answer">Yes, we provide placement assistance to eligible students.</div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".question").click(function(){
+
+        $(".question").not(this).removeClass("active");
+        $(this).toggleClass("active");
+
+        $(".answer").not($(this).next()).slideUp();
+        $(this).next(".answer").slideToggle();
+    });
+
+});
+</script>
+
+</body>
+</html>
